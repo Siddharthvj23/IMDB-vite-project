@@ -22,7 +22,7 @@ function Banner() {
             backgroundImage:
               `url(https://image.tmdb.org/t/p/original/${popularBackdrops[index]})`,
           }}>
-            <button onClick={next}>Next</button>
+            <button onClick={next}>Next11</button>
         </div>
     )
 }
