@@ -3,7 +3,7 @@ import genreids from "../utility/genre"
 import { MovieContext } from "./MovieContext"
 
 function Watchlist() {
-  const {watchlist,setWatchlist} = useContext(MovieContext)
+  const {watchlist,setWatchlist,handleDeleteWatchlist} = useContext(MovieContext)
 
   const [search, setSearch] = useState("")
   const [genreList, setgenreList] = useState(['All Genres'])
@@ -33,12 +33,13 @@ function Watchlist() {
     setWatchlist([...sortedAscending]);
 
   }
-  const handleDecendingPopularity = () => {
+  const handleDecendingRating = () => {
     let sortedDecending = watchlist.sort((movieObjA, movieObjB) => {
-      return movieObjB.popularity - movieObjA.popularity;
+      return movieObjB.vote_average - movieObjA.vote_average;;
     });
     setWatchlist([...sortedDecending])
   }
+  
   //popularity change
   const handleAscendingPopularity = () => {
     let sortedAscending = watchlist.sort((movieObjA, movieObjB) => {
@@ -47,9 +48,9 @@ function Watchlist() {
     setWatchlist([...sortedAscending]);
 
   }
-  const handleDecendingRating = () => {
+  const handleDecendingPopularity = () => {
     let sortedDecending = watchlist.sort((movieObjA, movieObjB) => {
-      return movieObjB.vote_average - movieObjA.vote_average;;
+      return movieObjB.popularity - movieObjA.popularity;
     });
     setWatchlist([...sortedDecending])
   }
@@ -125,7 +126,7 @@ function Watchlist() {
                 <td >{movieObj.vote_average}</td>
                 <td>{movieObj.popularity}</td>
                 <td>{genreids[movieObj.genre_ids[0]]}</td>
-                <td className=" text-red-700" >Delete</td>
+                <td onClick={()=>handleDeleteWatchlist(movieObj)} className=" text-red-700 cursor-pointer" >Delete</td>
               </tr>
             ))}
 

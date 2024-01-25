@@ -15,7 +15,10 @@ function Moives() {
         if (pageNo === 1) {
             setPageno(pageNo)
         }
-        setPageno(pageNo - 1)
+        else {
+            setPageno(pageNo - 1)
+        }
+       
     }
 
     useEffect(() => {

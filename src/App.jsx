@@ -18,6 +18,13 @@ function App() {
     localStorage.setItem('movies',JSON.stringify(newWatchlist))
    
   }
+  const handleDeleteWatchlist = (movieObj)=>{
+    let updatedwatchlist = watchlist.filter((movie)=>{
+      return movie.id != movieObj.id
+    })
+    setWatchlist(updatedwatchlist)
+    localStorage.setItem('movies',JSON.stringify(updatedwatchlist))
+  }
   useEffect(()=>{
     let moviesFromLocalStorage = localStorage.getItem('movies')
     if (!moviesFromLocalStorage){
@@ -28,7 +35,7 @@ function App() {
   return (
     <div>
       <BrowserRouter>
-      <MovieContext.Provider value={{handleAddtoWatchlist,watchlist,setWatchlist}}>
+      <MovieContext.Provider value={{handleAddtoWatchlist,watchlist,setWatchlist,handleDeleteWatchlist}}>
         <NavBar />
         <Routes>
           <Route path='/' element={<><Banner /> <Moives /></>} />
