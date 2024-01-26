@@ -17,7 +17,7 @@ function Banner() {
         setindex(index+1)
     }
     return (
-        <div  className=" lg:h-[80vh] bg-cover bg-center m-5"
+        <div  className=" h-[80vh] w-100% bg-cover bg-center  my-5"
         style={{
             backgroundImage:
               `url(https://image.tmdb.org/t/p/original/${popularBackdrops[index]})`,
