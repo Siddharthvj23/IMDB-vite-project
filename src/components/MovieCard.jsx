@@ -1,5 +1,6 @@
 import { MovieContext } from "./MovieContext";
 import { useContext } from "react";
+import { Link } from "react-router-dom";
 function MovieCard({ name,
     posterPath,
     moviesObject
@@ -14,8 +15,12 @@ function MovieCard({ name,
             }
         } return false;
     }
+
+
+            
     return (
-        <div>
+        <div> 
+            
             <div className="h-[35vh] w-[250px] bg-cover flex items-end rounded-lg hover:scale-110 flex-col justify-between duration-300"
                 style={{ backgroundImage: `url(https://image.tmdb.org/t/p/original/${posterPath})` }}>
                 {doseContain(moviesObject) ? (
@@ -28,7 +33,7 @@ function MovieCard({ name,
 
                 </div>
                 )}
-
+            <Link to ='/MovieContent'></Link>
             </div>
             <div className='text-white w-[250px] text-center text-xl p-2 bg-gray-900/70 rounded-lg'>
                 {name}

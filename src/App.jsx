@@ -8,6 +8,7 @@ import Upcoming from './components/Upcoming'
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import './App.css'
 import { MovieContext } from './components/MovieContext'
+import MovieContent from './components/MovieContent'
 
 function App() {
   const [watchlist,setWatchlist] = useState([])
@@ -42,7 +43,7 @@ function App() {
           <Route path='/Top-Rated' element={<TopRated />}/>
           <Route path='/Upcoming-Movies' element={<Upcoming />}/>
           <Route path='/watchlist' element={<Watchlist/>} />
-          
+          <Route path='/MovieContent' element={<MovieContent/>}/>
         </Routes>
       </MovieContext.Provider>
       </BrowserRouter>
