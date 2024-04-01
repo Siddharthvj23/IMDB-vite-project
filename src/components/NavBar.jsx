@@ -17,12 +17,7 @@ function NavBar() {
                     <Link to='/Watchlist' >WatchList</Link>
 
                 </div>
-                <div className=" flex justify-items-end my-3 ">
-                    <input placeholder="Search Movies"
-                        type="text"
-                        className="bg-gray-300 box-border px-4 border-hidden"
-                    />
-                </div>
+                
             </div>
         </div>
     )
