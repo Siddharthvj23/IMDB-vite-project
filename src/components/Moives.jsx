@@ -2,7 +2,7 @@ import { useEffect, useState } from "react"
 import MovieCard from "./MovieCard";
 import axios from 'axios'
 import Pagination from "./Pagination";
-import SearchBar from "./SearchBar";
+
 
 function Moives() {
     const [moives, setMovies] = useState([])
@@ -34,7 +34,7 @@ function Moives() {
     }, [pageNo]);
     return (
         <div>
-            <SearchBar/>
+    
             <div className="text-3xl font-bold text-center m-7 text-white">
                 <h1>Trending Movies</h1>
             </div>
