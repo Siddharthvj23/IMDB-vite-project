@@ -1,9 +1,52 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import axios from 'axios'
+import CastDetails from './CastDetails'
+import CrewDetails from './CrewDetails'
+import Ratings_popularities from './Rating_popularities'
+import { useParams } from 'react-router-dom'
+function MovieContent() {
+  const { id } = useParams()
+  const [MovieDetails, setMovieDetails] = useState([])
 
-function MovieContent({name}) {
-  console.log(name)
+  useEffect(() => {
+    axios.get(
+      `https://api.themoviedb.org/3/movie/${id}?api_key=32c8b7e1e81a2e62369048e459666a50&language=en-US&append_to_response=credits,videos`
+    ).then(function (res) {
+      setMovieDetails(res.data)
+    }
+    )
+  }, [id])
+
+  const { title, genres, backdrop_path, videos, credits, popularity, vote_average, revenue } = MovieDetails;
   return (
-    <div className='text-white flex items-center justify-center py-4 font-bold'>{movieObj.title}</div>
+    <>
+      <h1 className='text-white flex items-center justify-center py-4 font-bold text-4xl hover:scale-110  cursor-pointer '>{title}</h1>
+      <div className="flex justify-center mb-4">
+        {revenue && <Ratings_popularities rating={vote_average.toFixed(1)} popularity={popularity.toFixed(2)} revenues={revenue / 1000000} />}
+      </div>
+      <div
+        class="flex flex-row items-center justify-center mt-7 bg-black/10 bg-blend-multiply rounded-3xl h-[50rem] w-[90%] overflow-hidden bg-cover bg-center pl-5 pt-4 pb-6 text-white"
+        style={{
+          backgroundImage: `url(https://image.tmdb.org/t/p/original/${backdrop_path})`,
+        }}
+      ></div>
+
+      <div className="text-2xl font-bold text-center m-5">
+        <h2>Cast</h2>
+        <div className="flex flex-row flex-wrap justify-center gap-5">
+          {credits && credits.cast.slice(0 , 8).map((cast) => <CastDetails imageURL={cast.profile_path}  name={cast.name} Charecter={cast.character} />)}
+        </div>
+      </div>
+
+
+
+      <div className="text-2xl font-bold text-center m-5">
+        <h2>Crew</h2>
+        <div className="flex flex-row flex-wrap justify-center gap-5">
+          {credits && credits.crew.slice(0,8).map((crew) => <CrewDetails imageURL={crew.profile_path}  name={crew.name} department={crew.known_for_department} />)}
+        </div>
+      </div>
+    </>
   )
 }
 

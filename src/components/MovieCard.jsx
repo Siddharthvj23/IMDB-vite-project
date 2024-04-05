@@ -23,7 +23,7 @@ function MovieCard({ name,
     return (
         <div> 
             
-            <div  onClick={ ()=> {navigate('/MovieContent')}} className="h-[35vh] w-[250px] bg-cover flex items-end rounded-lg hover:scale-110 flex-col justify-between duration-300"
+            <div  onClick={ ()=> {navigate(`/MovieContent/${moviesObject.id}`)}} className="h-[35vh] w-[250px] bg-cover flex items-end rounded-lg hover:scale-110 flex-col justify-between duration-300"
                 style={{ backgroundImage: `url(https://image.tmdb.org/t/p/original/${posterPath})` }}>
                 {doseContain(moviesObject) ? (
                     <div onClick={()=>handleDeleteWatchlist(moviesObject)}className="flex justify-center h-8 items-center w-8 rounded-lg hover:backdrop-blur-lg text-xl cursor-pointer">

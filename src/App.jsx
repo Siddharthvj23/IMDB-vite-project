@@ -43,7 +43,7 @@ function App() {
           <Route path='/Top-Rated' element={<TopRated />}/>
           <Route path='/Upcoming-Movies' element={<Upcoming />}/>
           <Route path='/watchlist' element={<Watchlist/>} />
-          <Route path='/MovieContent' element={<MovieContent/>}/>
+          <Route path='/MovieContent/:id' element={<MovieContent/>}/>
         </Routes>
       </MovieContext.Provider>
       </BrowserRouter>
